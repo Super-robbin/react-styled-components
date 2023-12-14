@@ -79,12 +79,12 @@ header p {
   color: white;
 }
 
-.controls {
+/* .controls {
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
   margin-bottom: 1.5rem;
-}
+} */
 
 .controls label {
   display: block;
