@@ -5,7 +5,7 @@ import { styled } from "styled-components";
 // The syntax below is called tagged template. We copy the style from CSS file inside ``.
 // It will give us a React component that automatically returns a <div>
 // that has these styles applied to it. It will be a div that internally also uses the special children prop
-// so that it can be wrapped around other content. 
+// so that it can be wrapped around other content.
 // Finally, we replace the <div> below with the ControlContainer component.
 
 const ControlContainer = styled.div`
@@ -15,6 +15,30 @@ const ControlContainer = styled.div`
   margin-bottom: 1.5rem;
 `;
 
+const Label = styled.label`
+  display: block;
+  margin-bottom: 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #6b7280;
+`;
+// IMPORTANT: These components, which we build with styled dot,
+// do not just use the children prop so that we can wrap them around content like this texture.
+// But in addition, they also forward all props we're setting on this styled component
+// to the underlying built-in JSX element. So the built-in <label> in this case here.
+
+const Input = styled.input`
+  width: 100%;
+  padding: 0.75rem 1rem;
+  line-height: 1.5;
+  background-color: #d1d5db;
+  color: #374151;
+  border: 1px solid transparent;
+  border-radius: 0.25rem;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+`;
 export default function AuthInputs() {
   const [enteredEmail, setEnteredEmail] = useState("");
   const [enteredPassword, setEnteredPassword] = useState("");
@@ -39,13 +63,13 @@ export default function AuthInputs() {
     <div id="auth-inputs">
       <ControlContainer>
         <p>
-          <label className={`label ${emailNotValid ? "invalid" : ""}`}>
+          <Label className={`label ${emailNotValid ? "invalid" : ""}`}>
             Email
-          </label>
+          </Label>
           {/* 
           We can use the above approach to always have label, but also have invalid if emailNotValid is truthy
           */}
-          <input
+          <Input
             type="email"
             // style={{
             //   backgroundColor: emailNotValid ? '#fed2d2' : '#d1d5db'
@@ -56,10 +80,10 @@ export default function AuthInputs() {
           />
         </p>
         <p>
-          <label className={`label ${passwordNotValid ? "invalid" : ""}`}>
+          <Label className={`label ${passwordNotValid ? "invalid" : ""}`}>
             Password
-          </label>
-          <input
+          </Label>
+          <Input
             type="password"
             className={passwordNotValid ? "invalid" : undefined}
             onChange={(event) =>
