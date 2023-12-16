@@ -51,9 +51,10 @@ export default function Header() {
     // <StyledHeader>
     // When using Tailwind below, we can create a className, and the name will be the CSS style, in this case a flexbox.
     // IMPORTANT: look at the documentation for further info.
-    <header className="flex flex-col items-center mt-8 mb-16">
+    // We use md: below to change mb from 8 to 16 when the screen becomes bigger, media query
+    <header className="flex flex-col items-center mt-8 mb-8 md:mb-16">
       <img src={logo} alt="A canvas" className="object-contain mb-8 w-44 h44" />
-      <h1 className="text-4xl font-semibold tracking-widest text-center uppercase text-amber-800 font-title">
+      <h1 className="text-xl md:text-4xl font-semibold tracking-widest text-center uppercase text-amber-800 font-title">
         ReactArt
       </h1>
       <p className="text-stone-500">A community of artists and art-lovers.</p>
