@@ -2,7 +2,8 @@ import { useState } from "react";
 import { styled } from "styled-components";
 
 import Button from "./Button";
-import CustomInput from "./Input";
+// import CustomInput from "./Input";
+import Input from "./Input-new";
 
 // Styled in styled-components is an object where we can access the HTML elements.
 // The syntax below is called tagged template. We copy the style from CSS file inside ``.
@@ -39,9 +40,11 @@ export default function AuthInputs() {
   const passwordNotValid = submitted && enteredPassword.trim().length < 6;
 
   return (
-    <div id="auth-inputs">
-      <ControlContainer>
-        <CustomInput
+    <div id="auth-inputs" className="w-full max-w-sm p-8 mx-auto rounded shadow-md bg-gradient-to-b from-stone-700 to-stone-800">
+      {/* <ControlContainer> */}
+      <div className="flex flex-col gap-2 mb-6">
+        {/* <CustomInput */}
+        <Input
           type="email"
           // style={{
           //   backgroundColor: emailNotValid ? '#fed2d2' : '#d1d5db'
@@ -51,7 +54,8 @@ export default function AuthInputs() {
           invalid={emailNotValid}
           onChange={(event) => handleInputChange("email", event.target.value)}
         />
-        <CustomInput
+        {/* <CustomInput */}
+        <Input
           type="password"
           label="Password"
           invalid={passwordNotValid}
@@ -59,9 +63,10 @@ export default function AuthInputs() {
             handleInputChange("password", event.target.value)
           }
         />
-      </ControlContainer>
-      <div className="actions">
-        <button type="button" className="text-button">
+        </div>
+      {/* </ControlContainer> */}
+      <div className="flex justify-end gap-4">
+        <button type="button" className="text-amber-400 hover:text-amber-500">
           Create a new account
         </button>
         <Button onClick={handleLogin}>Sign In</Button>
